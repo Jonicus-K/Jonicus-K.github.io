@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Food Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #results {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Fish Food Calculator</h1>
+
+<label for="moneyLeft">Enter Money Left (£):</label>
+<input type="text" id="moneyLeft" placeholder="Enter remaining money (£)">
+<br>
+
+<label for="earningsPerDay">Average Fish Food Earned per Day:</label>
+<input type="text" id="earningsPerDay" placeholder="Enter average earnings per day">
+<br>
+
+<button onclick="calculateAndDisplay()">Calculate</button>
+
+<div id="results"></div>
+
+<script>
+  function calculateFishFoodAndMoney(numFish, feedPerFish, pencePerFishCompleted, remainingMoney, earningsPerDay) {
+    let penceLeft = Math.round(remainingMoney * 100);  // Convert pounds to pence
+    const fishesNeeded = Math.ceil(penceLeft / pencePerFishCompleted);
+
+    // Define feed amounts and their corresponding ranges
+    const feedRanges = [
+      { maxPence: 34, feedsPerFish: 70 },
+      { minPence: 35, feedsPerFish: 20 }
+      // Add more ranges as needed
+    ];
+
+    let totalFeedsNeeded = 0;
+
+    // Distribute feeds based on the specified ranges
+    for (let i = 0; i < feedRanges.length; i++) {
+      let range = feedRanges[i];
+      let rangePence = (range.maxPence) ? Math.min(penceLeft, range.maxPence) : penceLeft;
+      totalFeedsNeeded += (rangePence / pencePerFishCompleted) * range.feedsPerFish;
+      penceLeft -= rangePence;
+
+      // Break the loop if there's no money left
+      if (penceLeft <= 0) {
+        break;
+      }
+    }
+
+    const totalFishFood = totalFeedsNeeded * feedPerFish;
+    const daysToComplete = Math.ceil(totalFishFood / (earningsPerDay || 1));  // Avoid division by zero
+
+    return {
+      totalFishFood: totalFishFood,
+      fishesNeeded: fishesNeeded,
+      daysToComplete: daysToComplete
+    };
+  }
+
+  function calculateAndDisplay() {
+    const numFish = 5;              // Number of fish
+    const feedPerFish = 10;         // Fish food needed to feed a fish once
+    const pencePerFishCompleted = 2; // Pence deducted per completed fish
+
+    const moneyLeftInput = document.getElementById('moneyLeft');
+    const moneyLeftString = moneyLeftInput.value.replace('£', '');  // Remove pound sign
+    const remainingMoney = parseFloat(moneyLeftString);
+
+    const earningsPerDayInput = document.getElementById('earningsPerDay');
+    const earningsPerDayString = earningsPerDayInput.value || 0;
+    const earningsPerDay = parseFloat(earningsPerDayString);
+
+    const result = calculateFishFoodAndMoney(numFish, feedPerFish, pencePerFishCompleted, remainingMoney, earningsPerDay);
+    
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = `
+      <p>Total Fish Food Needed: ${result.totalFishFood}</p>
+      <p>Fishes Needed: ${result.fishesNeeded}</p>
+      <p>Days to Complete: ${result.daysToComplete}</p>
+    `;
+  }
+</script>
+
+</body>
+</html>
