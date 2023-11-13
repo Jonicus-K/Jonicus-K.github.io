@@ -4,41 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temu Fishland Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 20px;
-    }
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    line-height: 1.5; /* Add line-height for spacing between lines */
+  }
 
-    button {
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+  button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Add margin-top for spacing between button and inputs */
+  }
 
-    input {
-      padding: 5px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
+  input {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
 
-    #results {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-  </style>
+  #results {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+</style>
 </head>
 <body>
 
 <h1>Temu Fishland Calculator</h1>
 
 <label for="moneyLeft">Enter amount remaining (£):</label>
-<input type="text" id="moneyLeft" placeholder="For example 0.36 (£)">
+<input type="text" id="moneyLeft" placeholder="">
 <br>
 
 <label for="earningsPerDay">Average fish food earned per day:</label>
-<input type="text" id="earningsPerDay" placeholder="Enter average earnings per day">
+<input type="text" id="earningsPerDay" placeholder="">
 <br>
 
 <button onclick="calculateAndDisplay()">Calculate</button>
