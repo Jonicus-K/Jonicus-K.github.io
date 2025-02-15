@@ -1,6 +1,6 @@
 remote_theme: mmistakes/minimal-mistakes
 title: Butterworth Tech
 description: "Your Trusted PC Repair Experts"
-url: "https://yourgithubusername.github.io"
+url: "https://Jonicus-K.github.io"
 plugins:
   - jekyll-include-cache
