@@ -4,3 +4,8 @@ description: "Your Trusted PC Repair Experts"
 url: "https://Jonicus-K.github.io"
 plugins:
   - jekyll-include-cache
+
+header_pages:
+  - _pages/services.md
+  - _pages/about.md
+  - _pages/contact.md
