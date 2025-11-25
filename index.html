@@ -4,136 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Butterworth Tech - Remote Support</title>
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Phosphor Icons for nice visuals -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Favicon Configuration -->
+    <!-- This expects the 'B logo.jpg' file to be in the same folder -->
+    <link rel="icon" type="image/jpeg" href="B logo.jpg">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .cpu-glow {
-            box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.5);
+        /* Custom smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Animation for the download button pulse */
+        @keyframes subtle-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+        .btn-pulse {
+            animation: subtle-pulse 2s infinite;
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+<body class="bg-slate-900 text-slate-50 font-sans antialiased flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <span class="font-bold text-xl tracking-tight text-white">BUTTERWORTH <span class="text-emerald-400">TECH</span></span>
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <!-- This expects 'B logo White.png' -->
+                    <img class="h-10 w-auto" src="B logo White.png" alt="B Logo" onerror="this.style.display='none'; document.getElementById('text-logo').classList.remove('hidden')">
+                    <!-- Fallback if image is missing -->
+                    <span id="text-logo" class="hidden font-bold text-xl tracking-wider text-white">BUTTERWORTH<span class="text-blue-500">TECH</span></span>
+                    
+                    <span class="hidden md:block font-semibold text-lg ml-2 border-l border-slate-600 pl-3 text-slate-300">Remote Support Portal</span>
                 </div>
+                
+                <!-- Contact Link -->
                 <div>
-                    <a href="mailto:support@butterworthtech.co.uk" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Contact Support</a>
+                    <a href="mailto:support@butterworthtech.co.uk" class="text-sm font-medium text-slate-300 hover:text-white transition-colors flex items-center gap-2">
+                        <i class="ph ph-envelope-simple text-lg"></i>
+                        <span class="hidden sm:inline">Contact Support</span>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="flex-grow">
-        <div class="relative pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Main Content Area -->
+    <main class="flex-grow flex flex-col justify-center items-center relative overflow-hidden">
+        
+        <!-- Background Decor (Subtle Grid) -->
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(#64748b 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10 py-12 md:py-20 w-full">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 
-                <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                    
-                    <!-- Text Content -->
-                    <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
-                        <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl mb-6">
-                            Remote Support for <br class="hidden lg:block" />
-                            <span class="text-emerald-400">PC Issues</span>
+                <!-- Left Column: Text & Download -->
+                <div class="text-center md:text-left space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+                            Support when you <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">need it most.</span>
                         </h1>
-                        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-8">
-                            Fast, secure troubleshooting for your home or business computer. Download the tool below so I can connect and fix your issue remotely.
-                        </p>
-                        
-                        <!-- Main Action Button -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <!-- UPDATE THIS HREF WITH YOUR ACTION1 LINK -->
-                            <a href="#" onclick="alert('Please update the code with your specific Action1 download link!')" 
-                               class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-slate-900 bg-emerald-400 hover:bg-emerald-500 md:text-lg transition-all shadow-[0_0_20px_rgba(52,211,153,0.3)] hover:shadow-[0_0_30px_rgba(52,211,153,0.5)]">
-                                <i data-lucide="download" class="w-5 h-5 mr-2"></i>
-                                Download Support Tool
-                            </a>
-                        </div>
-                        <p class="mt-4 text-sm text-slate-500">
-                            <i data-lucide="shield-check" class="w-4 h-4 inline mr-1 align-text-bottom"></i> Secure Connection • Windows Only
+                        <p class="text-lg text-slate-400 max-w-lg mx-auto md:mx-0">
+                            Secure, fast remote assistance for your PC. Download the agent below to allow Butterworth Tech to troubleshoot your issues remotely.
                         </p>
                     </div>
 
-                    <!-- Image Content -->
-                    <div class="lg:col-span-5 relative">
-                        <!-- Decorative blob behind image -->
-                        <div class="absolute -inset-4 bg-emerald-500/20 blur-2xl rounded-full opacity-75"></div>
+                    <!-- The Action Section -->
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
+                        <p class="text-sm text-slate-400 mb-4 font-medium uppercase tracking-wide">Step 1: Download the Agent</p>
                         
-                        <!-- The Logo Image -->
-                        <!-- MAKE SURE TO UPLOAD YOUR IMAGE AS 'logo.jpg' -->
-                        <img src="./Butterworth Tech CPU.png" 
-                             alt="Butterworth Tech CPU Logo" 
-                             class="relative rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md mx-auto transform hover:scale-[1.02] transition-transform duration-500 cpu-glow"
-                             onerror="this.src='https://placehold.co/400x400/1e293b/10b981?text=Butterworth+Tech';">
+                        <!-- IMPORTANT: REPLACE THE HREF BELOW WITH YOUR ACTION1 URL -->
+                        <a href="YOUR_ACTION1_DOWNLOAD_LINK_HERE" 
+                           class="btn-pulse group relative w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:-translate-y-1">
+                            <i class="ph ph-download-simple text-2xl"></i>
+                            <span class="text-lg">Download Support Tool</span>
+                            <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        
+                        <p class="text-xs text-center text-slate-500 mt-3 flex items-center justify-center gap-1">
+                            <i class="ph ph-shield-check text-teal-500"></i>
+                            Secure connection via Action1
+                        </p>
+                    </div>
+
+                    <!-- Instructions -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start text-left text-sm text-slate-400">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-blue-400">2</div>
+                            <span>Run the file</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-blue-400">3</div>
+                            <span>Wait for connection</span>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- Instructions Steps -->
-        <div class="bg-slate-800/50 py-16 border-y border-slate-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-2xl font-bold text-white">How it works</h2>
-                    <p class="text-slate-400">Get connected in three simple steps</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Step 1 -->
-                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700/50 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-slate-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold border-4 border-slate-800">1</div>
-                        <div class="text-emerald-400 mb-4 flex justify-center">
-                            <i data-lucide="download-cloud" class="w-10 h-10"></i>
+                <!-- Right Column: Hero Image (CPU) -->
+                <div class="relative hidden md:block group">
+                    <!-- Glow effect behind image -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    
+                    <div class="relative bg-slate-900 ring-1 ring-slate-700/50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center shadow-2xl">
+                        <!-- Expects 'Butterworth Tech CPU.jpg' -->
+                        <img src="Butterworth Tech CPU.jpg" alt="Butterworth Tech CPU" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700 ease-in-out" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full text-slate-600\'><i class=\'ph ph-cpu text-6xl mb-4\'></i><span>CPU Image Placeholder</span></div>'">
+                        
+                        <!-- Overlay Text -->
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent p-6">
+                            <p class="font-mono text-xs text-teal-400 mb-1">SYSTEM_READY</p>
+                            <p class="font-bold text-white">Butterworth Tech Intelligence</p>
                         </div>
-                        <h3 class="text-lg font-semibold text-white text-center mb-2">Download the File</h3>
-                        <p class="text-slate-400 text-center text-sm">Click the green button above to download the Action1 remote agent.</p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700/50 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-slate-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold border-4 border-slate-800">2</div>
-                        <div class="text-emerald-400 mb-4 flex justify-center">
-                            <i data-lucide="play-circle" class="w-10 h-10"></i>
-                        </div>
-                        <h3 class="text-lg font-semibold text-white text-center mb-2">Run the Program</h3>
-                        <p class="text-slate-400 text-center text-sm">Open the downloaded file. You may need to click "Yes" to allow administrative access.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700/50 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-slate-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold border-4 border-slate-800">3</div>
-                        <div class="text-emerald-400 mb-4 flex justify-center">
-                            <i data-lucide="monitor-smartphone" class="w-10 h-10"></i>
-                        </div>
-                        <h3 class="text-lg font-semibold text-white text-center mb-2">I Take Over</h3>
-                        <p class="text-slate-400 text-center text-sm">Once the agent is installed, let me know, and I can remotely access your PC to fix the issue.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-500 text-sm">
-                &copy; <script>document.write(new Date().getFullYear())</script> Butterworth Tech. All rights reserved.<br>
-                Based in the UK.
-            </p>
+    <footer class="border-t border-slate-800 bg-slate-900 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm mb-2">&copy; <script>document.write(new Date().getFullYear())</script> Butterworth Tech. All rights reserved.</p>
+            <p class="text-slate-600 text-xs">Remote support services provided via Action1.</p>
         </div>
     </footer>
 
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-    </script>
 </body>
 </html>
