@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <!-- Favicon Configuration -->
-    <link rel="icon" type="image/png" href="B logo.png">
+    <link rel="icon" type="image/jpeg" href="B logo.jpg">
 
     <style>
         /* Custom smooth scrolling */
@@ -32,43 +32,6 @@
             transform-style: preserve-3d;
         }
         
-        /* Scanner Beam Animation */
-        .scanner-beam {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: rgba(59, 130, 246, 0.8);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(45, 212, 191, 0.8);
-            animation: scan 4s ease-in-out infinite;
-            z-index: 20;
-            opacity: 0;
-        }
-
-        @keyframes scan {
-            0% { top: 0%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-
-        /* Typing Effect for "SYSTEM_READY" */
-        .typing-effect {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #2dd4bf;
-            width: 0;
-            animation: typing 3s steps(30, end) forwards, blink 1s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: #2dd4bf }
-        }
-
         /* Floating Background Particles */
         .particle {
             position: absolute;
@@ -146,8 +109,8 @@
 
                         <p class="text-sm text-slate-400 mb-4 font-medium uppercase tracking-wide">Step 1: Download the Agent</p>
                         
-                        <!-- IMPORTANT: REPLACE THE HREF BELOW WITH YOUR ACTION1 URL -->
-                        <a href="YOUR_ACTION1_DOWNLOAD_LINK_HERE" 
+                        <!-- Updated Action1 Link -->
+                        <a href="https://app.eu.action1.com/agent/7038ae14-eaf3-11ef-a762-21b43f15f797/Windows/agent(Butterworth_Tech).msi" 
                            class="btn-pulse group relative w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:-translate-y-1 z-10">
                             <i class="ph ph-download-simple text-2xl"></i>
                             <span class="text-lg">Download Support Tool</span>
@@ -180,17 +143,12 @@
                     <!-- The 3D Card -->
                     <div id="cpu-card" class="tilt-card relative bg-slate-900 ring-1 ring-slate-700/50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center shadow-2xl">
                         
-                        <!-- Scanner Beam Overlay -->
-                        <div class="scanner-beam"></div>
-
                         <!-- Main Image -->
+                        <!-- UPDATED: Now points to .png -->
                         <img src="Butterworth Tech CPU.png" alt="Butterworth Tech CPU" class="object-cover w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-300" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full text-slate-600\'><i class=\'ph ph-cpu text-6xl mb-4\'></i><span>CPU Image Placeholder</span></div>'">
                         
                         <!-- Overlay Text -->
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent p-6 z-30">
-                            <div class="inline-block">
-                                <p class="typing-effect font-mono text-xs text-teal-400 mb-1">SYSTEM_READY...</p>
-                            </div>
                             <p class="font-bold text-white shadow-black drop-shadow-md">Butterworth Tech Intelligence</p>
                         </div>
 
